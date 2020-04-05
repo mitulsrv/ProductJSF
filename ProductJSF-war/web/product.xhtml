@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Product</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h:commandLink action="#{productManagedBean.redirectToaddProduct()}" value="New Product"/>
+                <br/>
+                <h:dataTable value="#{productManagedBean.allProducts}" var="product">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Product Code"/>
+                        </f:facet>
+                        <h:outputText value="#{product.productId}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Category"/>
+                        </f:facet>
+                        <h:outputText value="#{product.categoryId.categoryName}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Name"/>
+                        </f:facet>
+                        <h:outputText value="#{product.productName}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Price"/>
+                        </f:facet>
+                        <h:outputText value="#{product.price}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Description"/>
+                        </f:facet>
+                        <h:outputText value="#{product.description}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Action"/>
+                        </f:facet>
+                        <h:commandButton value="Edit" action="#{productManagedBean.getProduct(product.productId)}"/> | 
+                        <h:commandButton value="Delete" action="#{productManagedBean.deleteProduct(product.productId)}"/>
+                    </h:column>
+                    
+                </h:dataTable>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

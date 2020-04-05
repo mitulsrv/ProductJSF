@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Cateogory</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h:commandLink action="add-edit-category.xhtml" value="New Category"/>
+                <br />
+                <h:dataTable value="#{categoryManagedBean.allCategory}" var="category">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Category Code"/>
+                        </f:facet>
+                        <h:outputText value="#{category.categoryId}" />
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Category"/>
+                        </f:facet>
+                        <h:outputText value="${category.categoryName}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Action"/>
+                        </f:facet>
+                        <h:commandButton action="#{categoryManagedBean.getCategory(category.categoryId)}" value="Update"/> |
+                        <h:commandButton action="#{categoryManagedBean.removeCategory(category.categoryId)}" value="Delete"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+
